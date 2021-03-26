@@ -14,10 +14,13 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.urls import include, path
+from django.conf.urls import url, include
 from rest_framework import routers
 from rest.quickstart import views
 from django.contrib.gis.admin import OSMGeoAdmin
 from django.contrib import admin
+from rest.quickstart.views import homePageView, SensorDetailView
+from rest.quickstart.views import homePageView
 
 router = routers.DefaultRouter()
 router.register(r'users', views.UserViewSet)
@@ -28,5 +31,6 @@ router.register(r'groups', views.GroupViewSet)
 urlpatterns = [
     path('', include(router.urls)),
     path('admin/', admin.site.urls),
-    path('api-auth/', include('rest_framework.urls', namespace='rest_framework'))
+    path('api-auth/', include('rest_framework.urls', namespace='rest_framework')),
+    url(r'^sensors/', SensorDetailView.as_view(),  name='sensor-detail22')
 ]

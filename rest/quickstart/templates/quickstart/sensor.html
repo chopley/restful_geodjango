@@ -1,0 +1,24 @@
+{% load leaflet_tags %}
+{% leaflet_css %}
+{% leaflet_js %}
+
+<div>
+    <h1>{{ City }}</h1>
+    {% leaflet_map "main" callback="map_init" %}
+</div>
+
+
+<script type="text/javascript">
+    function map_init(map, options) {
+
+        {% for e in object_list %}
+            ab = {{ e.lat_lng }}
+            L.marker(ab).addTo(map);
+        {% endfor %}
+        map.setView(ab, 12)
+
+
+    }
+</script>
+
+

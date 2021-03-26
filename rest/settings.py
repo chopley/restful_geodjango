@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'django.contrib.gis',
     'rest.quickstart',
+    'leaflet'
 ]
 
 MIDDLEWARE = [
